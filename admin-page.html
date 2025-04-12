@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oriyat Mebel - Admin Panel</title>
+    <link rel="stylesheet" href="s-home.css">
+    <link rel="stylesheet" href="s-admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <header class="admin-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Oriyat Mebel</div>
+                <nav>
+                    <ul>
+                        <li><a href="/">Bosh sahifa</a></li>
+                        <li><a href="/register">Ro'yxatdan o'tish</a></li>
+                        <li><a href="/admin" class="active">Admin Panel</a></li>
+                        <li><a href="/logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Chiqish</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="admin-sidebar">
+            <div class="admin-user">
+                <img src="https://ui-avatars.com/api/?name=Admin&background=8b5a2b&color=fff" alt="Admin" class="admin-avatar">
+                <div class="admin-info">
+                    <h3 id="adminName">Admin</h3>
+                    <p>Administrator</p>
+                </div>
+            </div>
+            <ul class="admin-menu">
+                <li class="active"><a href="#products-tab" data-tab="products"><i class="fas fa-couch"></i> Mahsulotlar</a></li>
+                <li><a href="#orders-tab" data-tab="orders"><i class="fas fa-shopping-cart"></i> Buyurtmalar</a></li>
+                <li><a href="#users-tab" data-tab="users"><i class="fas fa-users"></i> Foydalanuvchilar</a></li>
+                <li><a href="#settings-tab" data-tab="settings"><i class="fas fa-cog"></i> Sozlamalar</a></li>
+            </ul>
+        </div>
+
+        <div class="admin-content">
+            <div class="admin-header-bar">
+                <h1><i class="fas fa-couch"></i> Mahsulotlar boshqaruvi</h1>
+                <div class="admin-actions">
+                    <button id="refreshProductsBtn" class="btn-icon"><i class="fas fa-sync-alt"></i></button>
+                    <button id="addProductBtn" class="btn btn-primary"><i class="fas fa-plus"></i> Yangi mahsulot</button>
+                </div>
+            </div>
+
+            <div class="admin-tab active" id="products-tab">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Yangi mahsulot qo'shish</h2>
+                        <button class="btn-icon toggle-form"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <form id="addProductForm" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Mahsulot nomi</label>
+                                    <input type="text" id="name" name="name" placeholder="Mahsulot nomini kiriting" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Kategoriya</label>
+                                    <select id="category" name="category" required>
+                                        <option value="">Kategoriyani tanlang</option>
+                                        <option value="livingroom">Mehmonxona</option>
+                                        <option value="bedroom">Yotoqxona</option>
+                                        <option value="kitchen">Oshxona</option>
+                                        <option value="office">Ofis</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Mahsulot tavsifi</label>
+                                <textarea id="description" name="description" placeholder="Mahsulot haqida batafsil ma'lumot" required></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="price">Narxi (so'm)</label>
+                                    <input type="number" id="price" name="price" placeholder="Mahsulot narxi" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="stock">Ombordagi soni</label>
+                                    <input type="number" id="stock" name="stock" placeholder="Ombordagi soni" value="10" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image_url">Rasm URL manzili</label>
+                                <input type="url" id="image_url" name="image_url" placeholder="https://example.com/image.jpg" required>
+                                <small>Yoki rasmni yuklang:</small>
+                                <input type="file" id="image_file" name="image_file" accept="image/*">
+                            </div>
+                            <div class="image-preview">
+                                <img id="preview" src="" alt="Rasm preview" style="display: none;">
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary cancel-form">Bekor qilish</button>
+                                <button type="submit" class="btn btn-primary">Mahsulotni qo'shish</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="admin-card products-list">
+                    <div class="card-header">
+                        <h2>Mahsulotlar ro'yxati</h2>
+                        <div class="search-box">
+                            <input type="text" id="searchProducts" placeholder="Mahsulot qidirish...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="productsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Rasm</th>
+                                        <th>Nomi</th>
+                                        <th>Kategoriya</th>
+                                        <th>Narxi</th>
+                                        <th>Soni</th>
+                                        <th>Amallar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productsTableBody">
+                                    <tr>
+                                        <td colspan="7" class="loading-data">
+                                            <i class="fas fa-spinner fa-spin"></i> Mahsulotlar yuklanmoqda...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-tab" id="orders-tab">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Buyurtmalar ro'yxati</h2>
+                        <div class="search-box">
+                            <input type="text" id="searchOrders" placeholder="Buyurtma qidirish...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Mijoz</th>
+                                        <th>Mahsulotlar</th>
+                                        <th>Umumiy narx</th>
+                                        <th>Sana</th>
+                                        <th>Status</th>
+                                        <th>Amallar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" class="no-data">Hozircha buyurtmalar mavjud emas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-tab" id="users-tab">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Foydalanuvchilar ro'yxati</h2>
+                        <div class="search-box">
+                            <input type="text" id="searchUsers" placeholder="Foydalanuvchi qidirish...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Foydalanuvchi nomi</th>
+                                        <th>Email</th>
+                                        <th>Ro'yxatdan o'tgan sana</th>
+                                        <th>Status</th>
+                                        <th>Amallar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6" class="loading-data">
+                                            <i class="fas fa-spinner fa-spin"></i> Foydalanuvchilar yuklanmoqda...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-tab" id="settings-tab">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Sayt sozlamalari</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="admin-form">
+                            <div class="form-group">
+                                <label>Sayt nomi</label>
+                                <input type="text" value="Oriyat Mebel">
+                            </div>
+                            <div class="form-group">
+                                <label>Aloqa raqami</label>
+                                <input type="text" value="+998 90 123 45 67">
+                            </div>
+                            <div class="form-group">
+                                <label>Email manzil</label>
+                                <input type="email" value="shamroyev577@gmail.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Manzil</label>
+                                <input type="text" value="Toshkent sh., Chilonzor tumani, Bunyodkor ko'chasi, 12-uy">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Saqlash</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Mahsulotni tahrirlash</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editProductForm" class="admin-form">
+                    <input type="hidden" id="edit_id" name="id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit_name">Mahsulot nomi</label>
+                            <input type="text" id="edit_name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_category">Kategoriya</label>
+                            <select id="edit_category" name="category" required>
+                                <option value="">Kategoriyani tanlang</option>
+                                <option value="livingroom">Mehmonxona</option>
+                                <option value="bedroom">Yotoqxona</option>
+                                <option value="kitchen">Oshxona</option>
+                                <option value="office">Ofis</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_description">Mahsulot tavsifi</label>
+                        <textarea id="edit_description" name="description" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="edit_price">Narxi (so'm)</label>
+                            <input type="number" id="edit_price" name="price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_stock">Ombordagi soni</label>
+                            <input type="number" id="edit_stock" name="stock" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_image_url">Rasm URL manzili</label>
+                        <input type="url" id="edit_image_url" name="image_url" required>
+                        <small>Yoki yangi rasmni yuklang:</small>
+                        <input type="file" id="edit_image_file" name="image_file" accept="image/*">
+                    </div>
+                    <div class="image-preview">
+                        <img id="edit_preview" src="" alt="Rasm preview">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary close-modal">Bekor qilish</button>
+                        <button type="submit" class="btn btn-primary">Saqlash</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteConfirmModal" class="modal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h2>Tasdiqlash</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Haqiqatan ham bu mahsulotni o'chirib tashlamoqchimisiz?</p>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary close-modal">Yo'q</button>
+                    <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Ha, o'chirish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="j-admin.js"></script>
+</body>
+</html>
