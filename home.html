@@ -7,6 +7,55 @@
     <link rel="stylesheet" href="s-home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .masonry-grid {
+        column-count: 4;
+        column-gap: 16px;
+        padding: 20px;
+        }
+
+        @media (max-width: 1000px) {
+        .masonry-grid {
+            column-count: 3;
+        }
+        }
+
+        @media (max-width: 700px) {
+        .masonry-grid {
+            column-count: 2;
+        }
+        }
+
+        @media (max-width: 480px) {
+        .masonry-grid {
+            column-count: 1;
+        }
+        }
+
+        .product-card {
+        background: #fff;
+        display: inline-block;
+        margin-bottom: 16px;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden;
+        break-inside: avoid;
+        }
+
+        .product-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        }
+
+        .product-title {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+        padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -64,41 +113,89 @@
     </section> -->
 
     <section class="products" id="products">
-        <div class="container">
+        <div class="masonry-grid">
             <h2 class="section-title">Mahsulotlarimiz</h2>
             <div class="product-card">
                 <img src="https://i.pinimg.com/474x/8d/42/79/8d427947724f1e1f94f69702f81a0f17.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
+                <h2 class="product-title">spalni #1</h2>
             </div>
             <div class="product-card">
                 <img src="https://i.pinimg.com/474x/92/75/8f/92758f0d0e4c10ff3a1a2ac668c9f600.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
+                <h2 class="product-title">spalni #2</h2>
             </div>
             <div class="product-card">
                 <img src="https://i.pinimg.com/474x/e9/a0/f5/e9a0f5fe952a78aa697b4a6eb4dfea97.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
+                <h2 class="product-title">spalni #3</h2>
             </div>
             <div class="product-card">
                 <img src="https://i.pinimg.com/474x/ba/82/10/ba8210c3aba78c06dc4f428d13f42441.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
+                <h2 class="product-title">spalni #4</h2>
             </div>
             <div class="product-card">
                 <img src="https://i.pinimg.com/474x/5c/57/6f/5c576fe6f9cc8edd984c2ff6575bc0ae.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
+                <h2 class="product-title">spalni #5</h2>
             </div>
             <div class="product-card">
                 <img src="https://i.pinimg.com/474x/b1/f0/1e/b1f01ebec001d4466573fc0340034ced.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
+                <h2 class="product-title">oshxona mebeli #1</h2>
             </div>
             <div class="product-card">
                 <img src="https://i.pinimg.com/474x/21/be/f0/21bef0b4d43f988093b2eaf7a2cec113.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
+                <h2 class="product-title">oshxona mebeli #2</h2>
             </div>
             <div class="product-card">
                 <img src="https://cdn.leonardo.ai/users/d47ca52f-d54d-4a5f-83c4-f0564f0be524/generations/95ed6303-3a0a-4c62-9e04-78be89427e89/Leonardo_Phoenix_10_A_moderately_sized_sleek_and_modern_kitche_1.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
+                <h2 class="product-title">oshxona mebeli #3</h2>
             </div>
             <div class="product-card">
+                <img src="https://frankfurt.apollo.olxcdn.com/v1/files/9jzhq11dyjde2-UZ/image;s=1000x700" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">oshxona mebeli #4</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://frankfurt.apollo.olxcdn.com/v1/files/n5lb7iry9oyt2-UZ/image;s=1000x700" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">oshxona mebeli #5</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://frankfurt.apollo.olxcdn.com/v1/files/3g63dw55vz333-UZ/image;s=1000x700" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">divan-kreslo #1</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://frankfurt.apollo.olxcdn.com/v1/files/aqc554cfz01k2-UZ/image;s=1000x700" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">divan-kreslo #2</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://frankfurt.apollo.olxcdn.com/v1/files/vlucxuy6km64-UZ/image;s=1000x700" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">divan-kreslo #3</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://frankfurt.apollo.olxcdn.com/v1/files/u47ew8p60bo92-UZ/image;s=1000x700" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">divan-kreslo #4</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://frankfurt.apollo.olxcdn.com/v1/files/8nq0zhnasncx-UZ/image;s=1000x700" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">divan-kreslo #5</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://triya.uz/wp-content/uploads/2024/04/sendi-kombi-open.jpg" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">Kiyim javoni #1</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://cdn.dafna.uz/products/1714118790.webp" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">Kiyim javoni #2</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://pinskdrev.by/web/catalogfiles/photogallery/Offer/16192/6T3A7972.jpg" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">Kiyim javoni #3</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://mebel-city.kz/wp-content/uploads/2023/05/Shkaf_dlya_odezhdi_Eviya_P_047-1113_sosna_randers_3-1-1.jpg" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">Kiyim javoni #4</h2>
+            </div>
+            <div class="product-card">
+                <img src="https://cdn.27.ua/sc--media--prod/default/9c/7a/f1/9c7af19d-aae7-47ca-aef2-ab6a6f5a0081.jpeg" alt="Mahsulot nomi" class="product-image">
+                <h2 class="product-title">Kiyim javoni #5</h2>
+            </div>
+            <!-- <div class="product-card">
                 <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
                 <h2 class="product-title">Mahsulot nomi</h2>
             </div>
@@ -117,55 +214,7 @@
             <div class="product-card">
                 <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
                 <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
-            <div class="product-card">
-                <img src="product-image.jpg" alt="Mahsulot nomi" class="product-image">
-                <h2 class="product-title">Mahsulot nomi</h2>
-            </div>
+            </div> -->
         </div>
     </section>
 
